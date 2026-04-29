@@ -8,5 +8,10 @@ cask "strata" do
   homepage "https://github.com/arkottke/strata"
 
   app "strata.app"
+  postflight do
+    system_command "xattr",
+      args: ["-dr", "com.apple.quarantine", "#{appdir}/strata.app"],
+      sudo: false
+  end
 end
 
